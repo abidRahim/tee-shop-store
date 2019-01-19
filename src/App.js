@@ -1,25 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import data from './data.json'
+import Product from './Product';
+import Sizes from './Sizes';
+
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cart: [],
+      filtered: [],
+    }
+  }
+
+  handleClick = (e, i) => {    
+    this.setState({
+      cart: [...this.state.cart, i],
+    });    
+  }
+
+  handleFilter = (e, i) => {
+    i = e.target.innerHTML;
+    this.setState({
+      filtered: [...this.state.filtered, i],
+    });
+    console.log(e.target.innerHTML);
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        {data.products && data.products.map((item, index) => <Product key={index} product={item} click={this.handleClick}/> )}
+        <Sizes click={this.handleFilter} data={data}/>
       </div>
     );
   }
