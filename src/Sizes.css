@@ -1,0 +1,24 @@
+.size-array {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.size-btn {
+  position: relative;
+  margin: 5px;
+  background-color: rgb(226, 226, 226);
+	height: 30px;
+	width: 30px;	
+  border-radius: 50%;
+	text-align: center;
+	padding: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.size-btn p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

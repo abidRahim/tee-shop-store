@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 
 class Product extends Component {
-  constructor(props) {
-    super(props);    
-  }
-  
-  render() {    
+  render() {
     const {id, sku, title, price, currencyFormat} = this.props.product;
     
     return(
-      <div>        
-        <img src={require(`../products/${sku}_2.jpg`)} />
+      <div className="product-card">
+        <img src={require(`../products/${sku}_2.jpg`)} alt={title}/>
         <h3>{title}</h3>
         <div className="price-tag">
           <span>{currencyFormat}</span>

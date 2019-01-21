@@ -1,3 +1,6 @@
+:root {
+	font-size: 16px;
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -25,6 +28,8 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	font-family: 'Verdana', 'Raleway', sans-serif;
+	margin: 50px;	
 }
 ol, ul {
 	list-style: none;
@@ -46,10 +51,24 @@ table {
   display: flex;
 }
 
-.sizeBtn {
-  background-color: #ccc;
-  height: 75px;
-  width: 75px;
-  border-radius: 50%;
-  text-align: center;
+.cart-container {
+	display: flex;
+}
+
+.size-container {
+	flex: 2;
+}
+
+.product-container {
+	flex: 10;	
+}
+
+.sort-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.product-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 250px);
 }
