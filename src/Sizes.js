@@ -2,9 +2,20 @@ import React, { Component } from 'react';
 import './Sizes.css';
 
 class ProductSizes extends Component {
+  currentSize = () => {
+    const {selectedSizes} = this.props;
+    if (Object.values(selectedSizes).includes(this.props.item)) {
+      return (this.props.item);
+    } else {
+      return "";
+    }    
+  }
+  
   render() {
-    return (      
-        <div className={`size-btn ${this.props.item}`}  onClick={(e) => this.props.click(e)}><p>{this.props.item}</p></div>      
+    // console.log(this.props.selectedSizes); // Why 14 times ?
+    
+    return (
+        <div className={`size-btn ${this.currentSize()}`}  onClick={(e) => this.props.click(e)}><p>{this.props.item}</p></div>
     )
   }
 }
@@ -14,13 +25,13 @@ class Sizes extends Component {
     var product = this.props.data;
     const productSizes = product.products.map(item => item.availableSizes).reduce((acc, cur) => acc.concat(cur) ,[]);
     const availableSizesArr = [...new Set(productSizes)].filter(val => val !== "X");
-
+    
     return (
       <section className="size-filter">
         <h2>Sizes:</h2>
         <div className="size-array">
           { availableSizesArr && availableSizesArr.map((item, index) => 
-            <ProductSizes key={index} item={item} click={this.props.click} />) }
+            <ProductSizes key={index} item={item} selectedSizes={this.props.selectedSizes} click={this.props.click} />) }
         </div>
       </section>
     )

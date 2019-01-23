@@ -1,0 +1,25 @@
+.cart-icon {
+  position: relative;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: inline-block;
+  padding: 1rem;
+  padding-bottom: 19px;
+  background-color: #1B1A1F;  
+}
+
+.fa-shopping-cart {
+  color: #e6e6e6;
+  font-size: 2rem;
+}
+
+.circle-notification {
+  position: absolute;
+  bottom: 12px;
+  right: 10px;
+  display: inline-block;
+  padding: 2px 4px 0.2px;
+  background-color: rgb(230, 189, 8);
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}

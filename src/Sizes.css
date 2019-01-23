@@ -22,3 +22,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.XS, .S, .M , .ML, .L, .XL, .XXL {
+  background-color: rgb(107, 107, 107);
+  color: white;
+}

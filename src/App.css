@@ -27,6 +27,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
+	position: relative;
 	line-height: 1;
 	font-family: 'Verdana', 'Raleway', sans-serif;
 	margin: 50px;	
@@ -47,8 +48,8 @@ table {
 	border-spacing: 0;
 }
 
-.price-tag {
-  display: flex;
+*, *::before, *::after {
+	box-sizing: border-box;
 }
 
 .cart-container {
@@ -71,4 +72,10 @@ table {
 .product-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, 250px);
+}
+
+.cart-notification {  
+	position: absolute;
+	top: 0;
+  right: 0;
 }

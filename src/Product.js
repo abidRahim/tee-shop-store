@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import './Product.css'
 
 class Product extends Component {
   render() {
-    const {id, sku, title, price, currencyFormat} = this.props.product;
+    const {sku, title, price, currencyFormat} = this.props.product;
     
     return(
       <div className="product-card">
@@ -12,7 +13,7 @@ class Product extends Component {
           <span>{currencyFormat}</span>
           <p>{price}</p>
         </div>
-        <button className="addToCartBtn" onClick={(e) => this.props.click(e, id)}>Add to Cart</button>
+        <button className="addToCartBtn" onClick={() => this.props.click(this.props.product)}>Add to Cart</button>
       </div>
     );
   }
