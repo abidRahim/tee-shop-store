@@ -1,5 +1,7 @@
 .cart-icon {
   position: relative;
+  top: 0;
+  right: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: inline-block;
   padding: 1rem;
@@ -18,8 +20,13 @@
   right: 10px;
   display: inline-block;
   padding: 2px 4px 0.2px;
-  background-color: rgb(230, 189, 8);
+  background-color: #e6bd08;
   border-radius: 10px;
   font-weight: 600;
   font-size: 0.9rem;
 }
+
+
+
+
+

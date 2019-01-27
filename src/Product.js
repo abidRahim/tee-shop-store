@@ -13,7 +13,7 @@ class Product extends Component {
           <span>{currencyFormat}</span>
           <p>{price}</p>
         </div>
-        <button className="addToCartBtn" onClick={() => this.props.click(this.props.product)}>Add to Cart</button>
+        <button className="addToCartBtn checkout-btn" onClick={() => this.props.click(this.props.product)}>Add to Cart</button>
       </div>
     );
   }

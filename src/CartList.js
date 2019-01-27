@@ -6,29 +6,44 @@ import CheckoutProduct from './CheckoutProduct';
 class CartList extends Component {
   constructor(props) {
     super(props);
-    this.cartSelected = this.props.cartSelected;
-  }
-
-  cartDisplayData = () => {
-    // return this.allData.filter((val) => this.cartSelected.includes(val));
+    this.state = {
+      totalPrice: 0
+    }
   }
   
-  render() {    
+  calculateTotal = () => {
+    const {cartSelected} = this.props;
+    let total = 0;
+    for (var item of cartSelected) {
+      total += item.item.price * item.quantity;
+    }
+    return total;
+  }
+  
+
+  render() {
+    const {cartSelected} = (this.props);   
+
     return (
       <div className="cart-container-box">
-        <div className="cart-head">
-          <Cart cartSelected={this.props.cartSelected}/> <span className="cart-text">Cart</span>
+        <div className="header">
+          <div className="cart-head">
+            <Cart cartSelected={cartSelected}/> <span className="cart-text">Cart</span>
+          </div>
+          <div className="cart-body">
+          {cartSelected.map( (item) => {
+            return <CheckoutProduct key={item.item.id} cartItem={item.item} itemQuantity={item.quantity} handleDelete={this.props.handleDelete}/>})}
+          </div>
         </div>
-        <div className="cart-body">
-          <CheckoutProduct cartDisplay={this.cartDisplayData()}/>
-        </div>
-        <div>
+        <div className="footer">
           <div className="cart-foot">
             <div>
-              <p>SUBTOTAL</p>
-              <div>
-                <span className="checkout-total"></span>
-              </div>
+              <div className="cart-subtotal"> 
+                <p>SUBTOTAL</p>
+                <div>
+                  <span className="checkout-total">$</span><span className="checkout-total">{this.calculateTotal().toFixed(2)}</span>
+                </div>
+              </div>              
             </div>
             <button className="checkout-btn">CHECKOUT</button>
           </div>

@@ -2,22 +2,25 @@ import React, {Component} from 'react';
 import './CheckoutProduct.css';
 
 class CheckoutProduct extends Component {
-  constructor(props){
-    super(props);
-    console.log(this.props.cartData);    
-  }
-
   render() {
+    const {id, sku, title, availableSizes, style, currencyFormat, price} = (this.props.cartItem);
+    
     return (
-      <div>
-        <div> <img /> </div>
-        <div>
-          <p className="checkout-title"></p>
-          <p className="checkout-size"></p>
-          <p className="checkout-style"></p>
-          <p className="checkout-style"><span>Quantity:</span></p>
+      <div className="cart-item-container">
+        <i className="float-right fas fa-times fa-lg" onClick={(e) => { this.props.handleDelete(e, id)}}></i>
+        <div className="cart-item-info">
+          <img className="checkout-img" src={require(`../products/${sku}_2.jpg`)} alt={title}/>
+          <div className="item-info">
+            <p className="checkout-title">{title}</p>
+            <div className="group-item-detail">
+              <p className="checkout-size">{availableSizes[0]}  </p>
+              <span className="separator">|</span>
+              <p className="checkout-style">  {style}</p> 
+            </div>            
+            <p className="checkout-quantity hilight"><span>Quantity: </span><span className="hilight">{this.props.itemQuantity}</span></p>
+          </div>
         </div>
-        <div className="checkout-price"><span></span></div>
+        <div className="checkout-price"><span>{currencyFormat}</span>{price}<span></span></div>
       </div>
     )
   }

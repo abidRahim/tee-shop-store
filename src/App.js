@@ -47,15 +47,24 @@ class App extends Component {
       })]
     })
     const newArr =  [...new Set(filterSizeData.flat())];
-    return newArr
+    return newArr;
   }
 
-  handleCartClick = (i) => {
-    console.log(i);
+  handleCartClick = (i) => {   
+    const {cart} = this.state;
     
+    const cartCopy = [...cart];
+    let flag=true;
+    for(var obj of cartCopy) {
+      if(obj.item.id == i.id){
+        obj.quantity++; flag= false;
+      }
+    }
+  
+    if(flag) cartCopy.push({item:i,quantity:1})
     this.setState({
-      cart: [...this.state.cart, i]
-    }); // How is it that on consoling state variables here, it returns one less state value    
+      cart : [...cartCopy]
+    })
   }
 
   handleFilter = (e, i) => {
@@ -104,14 +113,24 @@ class App extends Component {
     );
   }
 
+  handleDelete = (e, id) => {
+    const {cart} = this.state;
+    let tempCart  = [...cart];
+    tempCart = tempCart.filter( (val) => val.item.id !== id);
+    
+    this.setState({
+      cart: tempCart,
+    });
+  }
+
 
   render() {
-    const {allData, displayData, filtered, cart} = this.state;
+    const { displayData, filtered, cart} = this.state;
 
     return (
       <div>
         <Cart classname="cart-notification" cartSelected={cart}/>
-        <CartList cartSelected={cart}/>
+        <CartList cartSelected={cart} handleDelete={this.handleDelete}/>
         <main className="cart-container">
           <div className="size-container">
             <Sizes click={this.handleFilter} selectedSizes={filtered} data={data}/>
@@ -119,8 +138,8 @@ class App extends Component {
           <div className="product-container">
             <Sort change={this.handleSort}/>
             <div className="product-grid">
-              { displayData && displayData.map((item, index) =>
-              <Product key={index} product={item} click={this.handleCartClick} />)}
+              { displayData && displayData.map((item, index, arr) =>
+              <Product key={index} product={item} click={this.handleCartClick} length={arr.length} />)}
             </div>
           </div>
         </main>
