@@ -1,4 +1,44 @@
-.price-tag {
-  display: flex;
+.product-card button {
+  background-color: #0c0b10;
+  transition: background-color 0.2s ease-in-out;
 }
 
+.product-card:hover button{
+  background-color: #e6bd08;
+}
+
+.product-card {
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  border: 0.5px solid transparent;
+
+}
+.product-card:hover {
+  border: 0.5px solid #ccc;
+  cursor: pointer;
+}
+
+.product-card img {
+  margin: 18px 0;
+}
+
+.price-tag {
+  display: flex;
+  width: auto;
+  text-align: center;
+  margin: 5px 0 ;
+}
+.product-title {
+  max-width: 170px;
+  text-align: center;
+}
+
+.price-tag span {
+  align-self: center;
+}
+.price-tag p {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-left: 5px;
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css'
 import './Product.css'
 
 class Product extends Component {
@@ -8,7 +9,7 @@ class Product extends Component {
     return(
       <div className="product-card">
         <img src={require(`../products/${sku}_2.jpg`)} alt={title}/>
-        <h3>{title}</h3>
+        <h3 className="product-title">{title}</h3>
         <div className="price-tag">
           <span>{currencyFormat}</span>
           <p>{price}</p>

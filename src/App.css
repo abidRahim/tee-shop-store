@@ -1,5 +1,6 @@
 :root {
 	font-size: 16px;
+	position: relative;
 }
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -27,7 +28,6 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	position: relative;
 	line-height: 1;
 	font-family: 'Verdana', 'Raleway', sans-serif;
 	margin: 50px;	
@@ -67,9 +67,52 @@ table {
 .sort-container {
 	display: flex;
 	justify-content: space-between;
+	margin-bottom: 25px;
 }
 
 .product-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, 250px);
+}
+
+.addToCartBtn {
+  background-color: #0c0b10;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.addToCartBtn:hover {
+  background-color: #e6bd08;
+}
+
+.products-found span {
+	font-size: 0.85rem;
+}
+
+.select-options{
+	margin-right: 70px;
+	margin-left: 1rem;
+	padding: 5px;
+	background-color: white;
+	border: 0.5px solid rgb(219, 219, 219);
+	font-size: 1.08rem;
+}
+
+.select-options:focus {
+	outline: none;
+}
+
+.cart-open-container {
+	transform: translateX(0%);
+	transition: transform 0.3s ease-in-out;
+}
+
+.cart-close-container {
+	transform: translateX(115%);
+	transition: transform 0.3s ease-in-out;
+}
+
+.fixed {
+	position: fixed;
+	top: 0;
+	right: 0;
 }

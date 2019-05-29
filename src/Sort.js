@@ -3,10 +3,11 @@ import './App.css';
 
 class Sort extends Component {
   render() {
+    const {displayData} = this.props;
     return (
       <div className="sort-container">
         <small className="products-found">
-          <span>{} Product(s) found</span>
+          <span>{displayData.length} Product(s) found</span>
         </small>
         <div className="select-sort">
           Order By:

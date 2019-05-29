@@ -16,6 +16,7 @@ class App extends Component {
       cart: [],
       filtered: [],
       sortOption: "select",
+      displayCart: false,
     }
   }
 
@@ -56,7 +57,7 @@ class App extends Component {
     const cartCopy = [...cart];
     let flag=true;
     for(var obj of cartCopy) {
-      if(obj.item.id == i.id){
+      if(obj.item.id === i.id){
         obj.quantity++; flag= false;
       }
     }
@@ -123,20 +124,28 @@ class App extends Component {
     });
   }
 
+  handleCartDisplay = (displayCart) => {
+    this.setState({
+      displayCart
+    })
+  }
+
 
   render() {
-    const { displayData, filtered, cart} = this.state;
+    const { displayData, filtered, cart, displayCart} = this.state;
 
     return (
       <div>
-        <Cart classname="cart-notification" cartSelected={cart}/>
-        <CartList cartSelected={cart} handleDelete={this.handleDelete}/>
+        <Cart cartSelected={cart} handleCartDisplay={this.handleCartDisplay}/>
+        <div className={displayCart ? "cart-open-container fixed" : "cart-close-container fixed"}>
+          <CartList cartSelected={cart} handleDelete={this.handleDelete} handleCartDisplay={this.handleCartDisplay}/>
+        </div>
         <main className="cart-container">
           <div className="size-container">
             <Sizes click={this.handleFilter} selectedSizes={filtered} data={data}/>
           </div>
           <div className="product-container">
-            <Sort change={this.handleSort}/>
+            <Sort change={this.handleSort} displayData={displayData}/>
             <div className="product-grid">
               { displayData && displayData.map((item, index, arr) =>
               <Product key={index} product={item} click={this.handleCartClick} length={arr.length} />)}
