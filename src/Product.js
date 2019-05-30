@@ -5,10 +5,9 @@ import './Product.css'
 class Product extends Component {
   render() {
     const {sku, title, price, currencyFormat} = this.props.product;
-    
     return(
       <div className="product-card">
-        <img src={require(`../products/${sku}_2.jpg`)} alt={title}/>
+        <img src={require(`../products/${sku}_1.jpg`)} alt={title}/>
         <h3 className="product-title">{title}</h3>
         <div className="price-tag">
           <span>{currencyFormat}</span>

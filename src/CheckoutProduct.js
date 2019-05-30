@@ -9,7 +9,7 @@ class CheckoutProduct extends Component {
       <div className="cart-item-container">
         <i className="float-right fas fa-times fa-lg" onClick={(e) => { this.props.handleDelete(e, id)}}></i>
         <div className="cart-item-info">
-          <img className="checkout-img" src={require(`../products/${sku}_2.jpg`)} alt={title}/>
+          <img className="checkout-img" src={require(`../products/${sku}_1.jpg`)} alt={title}/>
           <div className="item-info">
             <p className="checkout-title">{title}</p>
             <div className="group-item-detail">

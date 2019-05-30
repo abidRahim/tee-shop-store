@@ -18,7 +18,7 @@ class Cart extends Component {
   
   render() {
     const { handleCartDisplay } = this.props;
-    // console.log(typeof());
+    
     return (
       <div className="cart-notification" onClick={handleCartDisplay !== undefined ? this.handleCartOnClick : null}>
         <div className="cart-icon">
