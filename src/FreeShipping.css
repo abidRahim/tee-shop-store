@@ -1,0 +1,9 @@
+.free-shipping {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  background-color: #0c0b10;
+  font-size: 0.62rem;
+  padding: 0.6em 0.5em;
+}

@@ -8,6 +8,7 @@
 }
 
 .product-card {
+  position: relative;
   text-align: center;
   display: grid;
   justify-items: center;
