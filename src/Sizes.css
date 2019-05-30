@@ -4,17 +4,23 @@
   margin: 30px 0;
 }
 
+.size-filter h2 {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
 .size-btn {
   position: relative;
-  margin: 5px;
+  margin-bottom: 10px;
   background-color: rgb(226, 226, 226);
 	height: 35px;
 	width: 35px;	
   border-radius: 50%;
 	text-align: center;
 	padding: 4px;
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   cursor: pointer;
+  font-weight: 500;
 }
 
 .size-btn:hover {
@@ -32,3 +38,4 @@
   background-color: #0c0b10;
   color: white;
 }
+

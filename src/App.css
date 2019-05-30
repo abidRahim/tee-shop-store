@@ -72,6 +72,7 @@ table {
 
 .product-grid {
 	display: grid;
+	grid-gap: 5px;
 	grid-template-columns: repeat(auto-fill, 250px);
 }
 
