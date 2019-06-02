@@ -35,7 +35,6 @@ class CartList extends Component {
             X
           </label>
         </div>
-        {/* <div className="float-box-right" onClick={(e) => this.handleCross(e)}>X</div> */}
           <div className="header">
             <div className="cart-head">
               <Cart cartSelected={cartSelected}/> <span className="cart-text">Cart</span>

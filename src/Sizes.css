@@ -1,6 +1,7 @@
 .size-array {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 40px);
+  grid-template-columns: repeat(auto-fit, 40px);
+  justify-content: center;
   margin: 20px 0;
 }
 

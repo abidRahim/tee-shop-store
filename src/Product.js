@@ -10,7 +10,7 @@ class Product extends Component {
       <div className="product-card">
         { isFreeShipping? <FreeShipping /> : null }
         <img src={require(`../products/${sku}_1.jpg`)} alt={title}/>
-        <h3 className="product-title">{title}</h3>
+        <p className="product-title">{title}</p>
         <div className="price-tag">
           <span>{currencyFormat}</span>
           <p>{price}</p>

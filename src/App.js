@@ -6,7 +6,7 @@ import Sizes from './Sizes';
 import Sort from './Sort';
 import CartList from './CartList';
 import Cart from './Cart';
- 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -15,23 +15,23 @@ class App extends Component {
       displayData: data.products,
       cart: [],
       filtered: [],
-      sortOption: "select",
+      sortOption: null,
       displayCart: false,
     }
   }
 
   checkSortState = () => {
-    const {displayData, sortOption} = this.state;
+    const { displayData, sortOption } = this.state;
     const sortDisplayData = [...displayData];
 
-    switch(sortOption) {
-      case 'lowestPrice' : {
+    switch (sortOption) {
+      case 'lowestPrice': {
         return sortDisplayData.sort((a, b) => a.price - b.price);
       }
       case 'highestPrice': {
         return sortDisplayData.sort((a, b) => b.price - a.price);
       }
-      default : {
+      default: {
         return displayData;
       }
     }
@@ -39,41 +39,41 @@ class App extends Component {
 
   filterSize = () => {
     let filterSizeData = [];
-    
-    const {filtered, allData} = this.state;
-    
+
+    const { filtered, allData } = this.state;
+
     filtered.forEach((size) => {
       filterSizeData = [...filterSizeData, allData.filter(val => {
-        return val.availableSizes.includes(size); 
+        return val.availableSizes.includes(size);
       })]
     })
-    const newArr =  [...new Set(filterSizeData.flat())];
+    const newArr = [...new Set(filterSizeData.flat())];
     return newArr;
   }
 
-  handleCartClick = (i) => {   
-    const {cart} = this.state;
-    
+  handleCartClick = (i) => {
+    const { cart } = this.state;
+
     const cartCopy = [...cart];
-    let flag=true;
-    for(var obj of cartCopy) {
-      if(obj.item.id === i.id){
-        obj.quantity++; flag= false;
+    let flag = true;
+    for (var obj of cartCopy) {
+      if (obj.item.id === i.id) {
+        obj.quantity++; flag = false;
       }
     }
-  
-    if(flag) cartCopy.push({item:i,quantity:1})
+
+    if (flag) cartCopy.push({ item: i, quantity: 1 })
     this.setState({
-      cart : [...cartCopy]
+      cart: [...cartCopy]
     })
   }
 
   handleFilter = (e, i) => {
-    const {filtered} = this.state;
+    const { filtered } = this.state;
     const filteredArr = [...filtered];
     i = e.target.innerText;
 
-    if(filteredArr.includes(i)) {
+    if (filteredArr.includes(i)) {
       filteredArr.splice(filtered.indexOf(i), 1)
       this.setState({ filtered: filteredArr }, () => {
         this.filteredDisplayData();
@@ -88,37 +88,37 @@ class App extends Component {
   }
 
   filteredDisplayData = () => {
-    const {filtered, allData} = this.state
+    const { filtered, allData } = this.state
 
-    if(filtered.length > 0) {
+    if (filtered.length > 0) {
       this.setState({
-        displayData : this.filterSize()
+        displayData: this.filterSize()
       })
     } else {
       this.setState({
-        displayData : allData
+        displayData: allData
       });
     }
   }
 
   handleSort = (e) => {
-    const option = e.target.value;   
-    
+    const option = e.target.value;
+
     this.setState({
       sortOption: option,
     }, () => {
-        this.setState({
-          displayData: this.checkSortState(),
-        });
-      }
+      this.setState({
+        displayData: this.checkSortState(),
+      });
+    }
     );
   }
 
   handleDelete = (e, id) => {
-    const {cart} = this.state;
-    let tempCart  = [...cart];
-    tempCart = tempCart.filter( (val) => val.item.id !== id);
-    
+    const { cart } = this.state;
+    let tempCart = [...cart];
+    tempCart = tempCart.filter((val) => val.item.id !== id);
+
     this.setState({
       cart: tempCart,
     });
@@ -131,24 +131,39 @@ class App extends Component {
   }
 
 
+  handleEscape = (event) => {
+    event.preventDefault();
+    if (event.defaultPrevented) {
+      return;
+    }
+    var key = event.key || event.keyCode;
+    console.log(key);
+    if (key === 'Escape' || key === 'Esc' || key === 27) {
+      this.setState({
+        displayCart: false,
+      });
+    }
+  }
+
+
   render() {
-    const { displayData, filtered, cart, displayCart} = this.state;
+    const { displayData, filtered, cart, displayCart } = this.state;
 
     return (
       <div>
-        <Cart cartSelected={cart} handleCartDisplay={this.handleCartDisplay}/>
-        <div className={displayCart ? "cart-open-container fixed" : "cart-close-container fixed"}>
-          <CartList cartSelected={cart} handleDelete={this.handleDelete} handleCartDisplay={this.handleCartDisplay}/>
+        <Cart cartSelected={cart} handleCartDisplay={this.handleCartDisplay} />
+        <div onKeyPress={this.handleEscape} className={displayCart ? "cart-open-container fixed" : "cart-close-container fixed"}>
+          <CartList cartSelected={cart} handleDelete={this.handleDelete} handleCartDisplay={this.handleCartDisplay} />
         </div>
         <main className="cart-container">
           <div className="size-container">
-            <Sizes click={this.handleFilter} selectedSizes={filtered} data={data}/>
+            <Sizes click={this.handleFilter} selectedSizes={filtered} data={data} />
           </div>
           <div className="product-container">
-            <Sort change={this.handleSort} displayData={displayData}/>
+            <Sort change={this.handleSort} displayData={displayData} />
             <div className="product-grid">
-              { displayData && displayData.map((item, index, arr) =>
-              <Product key={index} product={item} click={this.handleCartClick} length={arr.length} />)}
+              {displayData && displayData.map((item, index, arr) =>
+                <Product key={index} product={item} click={this.handleCartClick} length={arr.length} />)}
             </div>
           </div>
         </main>

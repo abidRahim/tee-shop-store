@@ -5,6 +5,7 @@ class Cart extends Component {
     super();
     this.toggle = true;
   }
+  
   totalItemQuantity = (cartItem = this.props.cartSelected)  => {
     let itemQty = 0;
     

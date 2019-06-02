@@ -6,9 +6,9 @@ class Sort extends Component {
     const {displayData} = this.props;
     return (
       <div className="sort-container">
-        <small className="products-found">
+        <p className="products-found">
           <span>{displayData.length} Product(s) found</span>
-        </small>
+        </p>
         <div className="select-sort">
           Order By:
           <select className="select-options" onChange={(e) => this.props.change(e)}>

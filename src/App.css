@@ -30,8 +30,15 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 	font-family: 'Verdana', 'Raleway', sans-serif;
-	margin: 50px;	
+	margin: 50px auto 0;
 }
+
+main {
+	padding: 20px 2%;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
 ol, ul {
 	list-style: none;
 }
@@ -58,6 +65,7 @@ table {
 
 .size-container {
 	flex: 2;
+	min-width: 80px;
 }
 
 .product-container {
@@ -72,7 +80,7 @@ table {
 
 .product-grid {
 	display: grid;	
-	grid-template-columns: repeat(auto-fill, 250px);
+	grid-template-columns: repeat(auto-fill, 25%);
 	grid-row-gap: 2em;
 }
 
@@ -89,8 +97,11 @@ table {
 	font-size: 0.85rem;
 }
 
+.products-found {
+	padding: 0 0 1.3em;
+}
+
 .select-options{
-	margin-right: 70px;
 	margin-left: 1rem;
 	padding: 5px;
 	background-color: white;
@@ -104,17 +115,53 @@ table {
 
 .cart-open-container {
 	transform: translateX(0%);
-	transition: transform 0.3s ease-in-out;
+	transition: transform 0.2s ease-in-out;
 }
 
 .cart-close-container {
 	transform: translateX(115%);
-	transition: transform 0.3s ease-in-out;
+	transition: transform 0.2s ease-in-out;
 }
 
 .fixed {
 	position: fixed;
 	top: 0;
 	right: 0;
-	z-index: 1;
+	z-index: 2;
+}
+
+@media screen and (max-width: 710px) and (min-width: 461px) {
+	.sort-container { 
+		flex-direction: column;
+	}
+
+	.product-grid {
+		grid-template-columns: repeat(auto-fill, 33%);
+	}
+
+	.product-card img {
+		width: 60%;
+	}
+}
+
+@media screen and (max-width: 620px) {
+	.product-grid {
+		grid-template-columns: repeat(auto-fill, 50%);
+	}
+}
+
+@media screen and (max-width: 460px) {
+	.cart-container {
+		flex-direction: column;
+	}
+	.sort-container { 
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+	}	
+
+	.size-filter {
+		text-align: center;
+	}
+
 }
