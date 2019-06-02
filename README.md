@@ -1,5 +1,4 @@
 # React Tee Shopping Cart
-=========================
 
 ***View live project here : https://react-tee-shopping-cart.netlify.com/***
 
@@ -11,8 +10,10 @@
 - **Responsive view**
 
 ### Run
-`npm install` 
-`npm start`
+```
+npm install
+npm start
+```
 
 --------------------------
 ### MIT license
