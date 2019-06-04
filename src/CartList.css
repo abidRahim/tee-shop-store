@@ -31,12 +31,7 @@
 
 .cart-head {
   padding: 35px 0;
-  width: 110px;
-  margin: 0 auto;
-}
-
-.cart-subtotal {
-  /* padding: 20px; */
+  text-align: center;
 }
 
 .cart-text {
@@ -98,6 +93,9 @@
 
 .message {
   color: #e6e6e6;
+  text-align: center;
+  font-weight: 500;
+  height: 100%;
 }
 
 @media screen and (max-width: 620px) {
@@ -107,5 +105,5 @@
 
 	.float-box-right {
 		left: 0%;
-	}
+  }
 }

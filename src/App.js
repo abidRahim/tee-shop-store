@@ -22,17 +22,29 @@ class App extends Component {
 
   checkSortState = () => {
     const { displayData, sortOption } = this.state;
-    const sortDisplayData = [...displayData];
+    const sortData = [...displayData];
 
     switch (sortOption) {
       case 'lowestPrice': {
-        return sortDisplayData.sort((a, b) => a.price - b.price);
+        return sortData.sort((a, b) => a.price - b.price);
+        // return sortData.reduce((sorted, el) => {
+        //   let index = 0;
+        //   while(index < sortData.length && el.price < sortData[index].price) index++;
+        //   sorted.splice(index, 0, el);
+        //   return sorted;
+        // }, []);
       }
       case 'highestPrice': {
-        return sortDisplayData.sort((a, b) => b.price - a.price);
+        return sortData.sort((a, b) => b.price - a.price);
+        // return sortData.reduce((sorted, el) => {
+        //   let index = 0;
+        //   while(index < sortData.length && el.price > sortData[index].price) index++;
+        //   sorted.splice(index, 0, el);
+        //   return sorted;
+        // }, []);
       }
       default: {
-        return displayData;
+        return sortData.sort((a, b) => a.sku - b.sku);
       }
     }
   }
@@ -93,7 +105,7 @@ class App extends Component {
     if (filtered.length > 0) {
       this.setState({
         displayData: this.filterSize()
-      })
+      }, )
     } else {
       this.setState({
         displayData: allData

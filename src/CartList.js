@@ -40,19 +40,19 @@ class CartList extends Component {
               <Cart cartSelected={cartSelected}/> <span className="cart-text">Cart</span>
             </div>
             <div className="cart-body">
-            {cartSelected ? cartSelected.map( (item) => {
-              return <CheckoutProduct key={item.item.id} cartItem={item.item} itemQuantity={item.quantity} handleDelete={this.props.handleDelete}/>}) : <p className="message">Add Some Products in the cart <div>:)</div></p>}
+            {cartSelected.length !== 0 ? cartSelected.map( (item) => {
+              return <CheckoutProduct key={item.item.id} cartItem={item.item} itemQuantity={item.quantity} handleDelete={this.props.handleDelete}/>}) : <p className="message">Add Some Products in the cart <div><p>&nbsp;</p> :)</div></p>}
             </div>
           </div>
           <div className="footer">
             <div className="cart-foot">
               <div>
-                <div className="cart-subtotal"> 
+                <div className="cart-subtotal">
                   <p>SUBTOTAL</p>
                   <div>
                     <span className="checkout-total">$</span><span className="checkout-total">{this.calculateTotal().toFixed(2)}</span>
                   </div>
-                </div>              
+                </div>
               </div>
               <button className="checkout-btn">CHECKOUT</button>
             </div>

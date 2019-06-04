@@ -31,6 +31,12 @@
 	position: absolute;
 	top: 0;
   right: 0;
-  cursor: pointer;
-  
+  cursor: pointer;  
+}
+
+@media screen and (max-width: 540px) {
+  .cart-icon {
+    padding: 0.5rem;
+    padding-bottom: 15px;
+  }
 }
