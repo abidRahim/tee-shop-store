@@ -31,4 +31,4 @@ class Cart extends Component {
   }
 }
 
-export default Cart;
+export default React.memo(Cart);

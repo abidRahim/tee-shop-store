@@ -25,7 +25,7 @@ class Sizes extends Component {
     var product = this.props.data;
     const productSizes = product.products.map(item => item.availableSizes).reduce((acc, cur) => acc.concat(cur) ,[]);
     const availableSizesArr = [...new Set(productSizes)].filter(val => val !== "X");
-    
+
     return (
       <section className="size-filter">
         <h2>Sizes:</h2>
@@ -38,4 +38,4 @@ class Sizes extends Component {
   }
 }
 
-export default Sizes;
+export default React.memo(Sizes);

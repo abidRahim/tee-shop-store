@@ -26,4 +26,4 @@ class CheckoutProduct extends Component {
   }
 }
 
-export default CheckoutProduct;
+export default React.memo(CheckoutProduct);

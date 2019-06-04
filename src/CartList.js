@@ -62,4 +62,4 @@ class CartList extends Component {
   }
 }
 
-export default CartList;
+export default React.memo(CartList);
