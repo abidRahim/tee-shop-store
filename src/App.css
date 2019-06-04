@@ -151,6 +151,9 @@ table {
 }
 
 @media screen and (max-width: 460px) {
+	:root {
+		font-size: 14px;
+	}
 	.cart-container {
 		flex-direction: column;
 	}

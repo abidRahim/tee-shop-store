@@ -26,7 +26,7 @@ class CartList extends Component {
   }
 
   render() {
-    const { cartSelected } = (this.props);   
+    const { cartSelected } = (this.props);
     
     return (
       <div className="cart-container-box">
@@ -41,7 +41,7 @@ class CartList extends Component {
             </div>
             <div className="cart-body">
             {cartSelected.length !== 0 ? cartSelected.map( (item) => {
-              return <CheckoutProduct key={item.item.id} cartItem={item.item} itemQuantity={item.quantity} handleDelete={this.props.handleDelete}/>}) : <p className="message">Add Some Products in the cart <div><p>&nbsp;</p> :)</div></p>}
+              return <CheckoutProduct key={item.item.id} cartItem={item.item} itemQuantity={item.quantity} handleDelete={this.props.handleDelete}/>}) : <div className="message">Add Some Products in the cart <div><p>&nbsp;</p> :)</div></div>}
             </div>
           </div>
           <div className="footer">

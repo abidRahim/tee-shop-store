@@ -20,31 +20,18 @@ class App extends Component {
     }
   }
 
-  checkSortState = () => {
-    const { displayData, sortOption } = this.state;
-    const sortData = [...displayData];
+  checkSortState = (sortData) => {
+    const { sortOption } = this.state;
 
     switch (sortOption) {
       case 'lowestPrice': {
-        return sortData.sort((a, b) => a.price - b.price);
-        // return sortData.reduce((sorted, el) => {
-        //   let index = 0;
-        //   while(index < sortData.length && el.price < sortData[index].price) index++;
-        //   sorted.splice(index, 0, el);
-        //   return sorted;
-        // }, []);
+        return sortData.sort((a, b) => a.price - b.price);        
       }
       case 'highestPrice': {
         return sortData.sort((a, b) => b.price - a.price);
-        // return sortData.reduce((sorted, el) => {
-        //   let index = 0;
-        //   while(index < sortData.length && el.price > sortData[index].price) index++;
-        //   sorted.splice(index, 0, el);
-        //   return sorted;
-        // }, []);
       }
       default: {
-        return sortData.sort((a, b) => a.sku - b.sku);
+        return sortData.sort((a, b) => b.id - a.id);
       }
     }
   }
@@ -60,10 +47,10 @@ class App extends Component {
       })]
     })
     const newArr = [...new Set(filterSizeData.flat())];
-    return newArr;
+    return this.checkSortState(newArr);
   }
 
-  handleCartClick = (i) => {
+  handleAddToCartClick = (i) => {
     const { cart } = this.state;
 
     const cartCopy = [...cart];
@@ -100,11 +87,11 @@ class App extends Component {
   }
 
   filteredDisplayData = () => {
-    const { filtered, allData } = this.state
+    const { filtered, allData } = this.state;
 
     if (filtered.length > 0) {
       this.setState({
-        displayData: this.filterSize()
+        displayData: this.filterSize(),
       }, )
     } else {
       this.setState({
@@ -115,12 +102,14 @@ class App extends Component {
 
   handleSort = (e) => {
     const option = e.target.value;
+    const { displayData } = this.state;
 
     this.setState({
       sortOption: option,
     }, () => {
+      const sorted = this.checkSortState(displayData);
       this.setState({
-        displayData: this.checkSortState(),
+        displayData: sorted,
       });
     }
     );
@@ -174,8 +163,8 @@ class App extends Component {
           <div className="product-container">
             <Sort change={this.handleSort} displayData={displayData} />
             <div className="product-grid">
-              {displayData && displayData.map((item, index, arr) =>
-                <Product key={index} product={item} click={this.handleCartClick} length={arr.length} />)}
+              {displayData && displayData.map((item, arr) =>
+                <Product key={item.id} product={item} click={this.handleAddToCartClick} length={arr.length} />)}
             </div>
           </div>
         </main>
